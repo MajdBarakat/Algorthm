@@ -2,9 +2,10 @@
 
 // var rows = 25
 // var cols = 25
+var drawing = false;
 const table = document.getElementById('grid')
 
-document.onload = setup(25,25);
+document.onload = setup(29,25);
 
 function setup(cols,rows){
     //calculate amount of cols and rows fit for the screen 
@@ -13,14 +14,40 @@ function setup(cols,rows){
         tableRow.dataset.row = i
         table.appendChild(tableRow);
         for (let j = 0; j < rows; j++) {
-            const square = document.createElement('td')
-            square.dataset.position = [i,j], square.dataset.state = "unvisted"
-            if(square.dataset.position == [1,1]) square.dataset.state = "visited"; //refactor this later
-            tableRow.appendChild(square)
+            const cell = document.createElement('td')
+            cell.dataset.position = [i,j], cell.dataset.state = "unvisited"
+            tableRow.appendChild(cell)
         }
     }
 }
 
-function RecursiveBackTracking(){
+//drawing eventListeners
+
+const td = document.querySelectorAll('td')
+
+document.addEventListener("mousedown", () => {
+    event.preventDefault();
+    drawing = true;
+})
+document.addEventListener("mouseup", () => {
+    drawing = false;
+})
+td.forEach(cell => {
+    cell.addEventListener("mouseover", () => {
+        if(drawing == true && cell.dataset.state != "wall"){
+            cell.dataset.state = "wall";
+        }
+        else if(drawing == true && cell.dataset.state == "wall"){
+            cell.dataset.state = "unvisited";
+        }
+    })
     
-}
+    cell.addEventListener("mousedown", () => {
+        if(cell.dataset.state != "wall"){
+            cell.dataset.state = "wall";
+        }
+        else if(cell.dataset.state == "wall"){
+            cell.dataset.state = "unvisited";
+        }
+    })
+})

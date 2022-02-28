@@ -5,10 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1440px, initial-scale=1.0">
     <title>Pathfinder</title>
+    <script src="/scripts/mazeGenerating.js"></script>
 </head>
 <body>
     <table id="grid">
     </table>
+    <button onclick="clearWalls()"> clear all walls</button>
+    <button onclick="drawEdges(29,25)"> draw edges</button>
+    <button onclick="randomMazeGen(.35)"> random maze gen</button>
+    <button onclick="recursiveBtMazeGen(29,25,'unvisited')"> recursive maze gen 1</button>
+    <button onclick="recursiveBtMazeGen(29,25,'wall')"> recursive maze gen 2</button>
+    <button onclick="recursiveDivisionMazeGenVertical(29,25)"> recursive division maze gen</button>
+    <button onclick="findArea([1,1])"> find area</button>
+
 
     <!-- load scripts -->
     <script src="/scripts/main.js"></script>
@@ -27,6 +36,9 @@
     [data-state =  "wall"]{
         background: black;
     }
+    /* [data-state =  "edge"]{
+        background: black;
+    } */
     [data-state =  "start"]{
         background: lightgreen;
     }
