@@ -6,18 +6,43 @@
     <meta name="viewport" content="width=1440px, initial-scale=1.0">
     <title>Pathfinder</title>
     <script src="/scripts/mazeGenerating.js"></script>
+    <script src="/scripts/pathFinding.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
 </head>
 <body>
     <table id="grid">
     </table>
+
+    <table id="#our_table" border="1">
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+        </tr>
+        <tr>
+            <td><span class="event" id="item1" draggable="true" display="flexbox"><img src="/assets/Start.svg" alt="start" width="80%" height="80%"></span>
+            </td>
+            <td><span class="event" id="item2" draggable="true" display="flexbox"><img src="/assets/End.svg" alt="end" width="80%" height="70%"></span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+
     <button onclick="clearWalls()"> clear all walls</button>
     <button onclick="drawEdges(29,25)"> draw edges</button>
     <button onclick="randomMazeGen(.35)"> random maze gen</button>
     <button onclick="recursiveBtMazeGen(29,25,'unvisited')"> recursive maze gen 1</button>
     <button onclick="recursiveBtMazeGen(29,25,'wall')"> recursive maze gen 2</button>
-    <button onclick="recursiveDivisionMazeGenVertical(29,25)"> recursive division maze gen</button>
-    <button onclick="findArea([1,1])"> find area</button>
+    <button onclick="setStartCell([1,1])"> set start</button>
 
+    <!-- <button onclick="recursiveDivisionMazeGenVertical(29,25)"> recursive division maze gen</button>
+    <button onclick="findArea([1,1])"> find area</button> -->
 
     <!-- load scripts -->
     <script src="/scripts/main.js"></script>
@@ -29,8 +54,8 @@
         border-collapse: collapse;
     }
     td{
-        width: 5px;
-        height: 5px;
+        width: 7px;
+        height: 7px;
         border: 0.5px solid black;
     }
     [data-state =  "wall"]{
@@ -53,6 +78,9 @@
     }
     [data-state =  "path"]{
         background: greenyellow;
+    }
+    span{
+        display: flex;
     }
 </style>
 
