@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=1440px, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinder</title>
-    <script src="/scripts/mazeGenerating.js"></script>
-    <script src="/scripts/pathFinding.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
+    <script type="module" src="/scripts/mazeGenerating.js"></script>
+    <script type="module" src="/scripts/pathFinding.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
     <table id="grid">
     </table>
 
-    <table id="#our_table" border="1">
+    <!-- <table id="#our_table" border="1">
         <tr>
             <th>Column 1</th>
             <th>Column 2</th>
@@ -31,21 +31,24 @@
             <td></td>
             <td></td>
         </tr>
-    </table>
+    </table> -->
 
 
-    <button onclick="clearWalls()"> clear all walls</button>
-    <button onclick="drawEdges(29,25)"> draw edges</button>
-    <button onclick="randomMazeGen(.35)"> random maze gen</button>
-    <button onclick="recursiveBtMazeGen(29,25,'unvisited')"> recursive maze gen 1</button>
-    <button onclick="recursiveBtMazeGen(29,25,'wall')"> recursive maze gen 2</button>
-    <button onclick="setStartCell([1,1])"> set start</button>
+    <button id="clearWalls"> clear all walls</button>
+    <button id="randomMazeGen"> random maze gen</button>
+    <button id="recursiveBtMazeGen1"> recursive maze gen 1</button>
+    <button id="recursiveBtMazeGen2"> recursive maze gen 2</button>
+    <button id="setStartCell"> set start</button>
+    <button id="setEndCell"> set end</button>
+    <button id="depthFirstSearch"> Depth First Search</button>
+    <button id="dijkstra"> Dijkstra's</button>
+
 
     <!-- <button onclick="recursiveDivisionMazeGenVertical(29,25)"> recursive division maze gen</button>
     <button onclick="findArea([1,1])"> find area</button> -->
 
     <!-- load scripts -->
-    <script src="/scripts/main.js"></script>
+    <script type="module" src="/scripts/main.js"></script>
 </body>
 
 <style>
