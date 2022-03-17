@@ -37,14 +37,14 @@ export function checkIfDist(arr,dist){
 
 export function checkIfAvailable2(arr){
     var available = [];
+    var endFound = false
     arr.forEach(cell => {
         const state = document.querySelector(`[data-position = "${cell}"]`).dataset.state
-        if (state == "unvisited") available.push(cell); else if(state == "end") return available = false;
+        if (state == "unvisited") available.push(cell); else if(state == "end") return endFound = true ;
     })
+    endFound == true ? available = false : false;
     return available;
 }
-
-
   
 export function chooseRandomNeighbour(arr){
   return arr[Math.floor(Math.random() * arr.length)]
@@ -70,4 +70,35 @@ export function uniqueXDimensionalArr(arr) {
         x[stringified] = true;
     }
     return uniqueArr;
+}
+
+export function findDistance(start,finish){
+    return Math.sqrt(Math.pow(finish[0] - start[0],2) + Math.pow(finish[1] - start[1],2))
+}
+
+export function dijkstraCalcDist(startCell, cols, rows){
+    const all = document.querySelectorAll('[data-state = "visited"]')
+    all.forEach( cell => {
+        cell.dataset.dist = -1
+    })
+    var currentCells = [startCell]
+    var noDist = document.querySelectorAll('[data-state = "visited"][data-dist = "-1"]').length
+    var dist = 0;
+    while(noDist > 0){
+        var available = []
+        noDist = document.querySelectorAll('[data-state = "visited"][data-dist = "-1"]').length
+        for (let i = 0; i < currentCells.length; i++) {
+            const targetCell = document.querySelector(`[data-position = "${currentCells[i]}"]`)
+            //console.log(currentCells[0][i])
+            targetCell.dataset.dist = dist
+            var availableNeighbours = checkIfDist(checkIfType(checkNeighbours((currentCells[i]),cols,rows,1),"visited"),-1)
+            for (let i = 0; i < availableNeighbours.length; i++) {available.push(availableNeighbours[i])}
+            
+            //dist == 20 ? noDist = 0: false;
+        }
+        dist++
+        currentCells = uniqueXDimensionalArr(available)
+    }
+    console.log("ENDED because ", noDist)
+
 }

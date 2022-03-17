@@ -5,85 +5,179 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/styles.css">
     <script type="module" src="/scripts/mazeGenerating.js"></script>
     <script type="module" src="/scripts/pathFinding.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-    <table id="grid">
-    </table>
 
-    <!-- <table id="#our_table" border="1">
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-            <th>Column 3</th>
-        </tr>
-        <tr>
-            <td><span class="event" id="item1" draggable="true" display="flexbox"><img src="/assets/Start.svg" alt="start" width="80%" height="80%"></span>
-            </td>
-            <td><span class="event" id="item2" draggable="true" display="flexbox"><img src="/assets/End.svg" alt="end" width="80%" height="70%"></span>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table> -->
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <a href="" class="logo">Algorthm.co.uk</a>
+            </div>
+            <div class="button-container">
+                <a id="clearAll">CLEAR</a>
+                <a id="generateMaze">GENERATE MAZE</a>
+                <a id="findPath">FIND PATH</a>
+            </div>
+            <div class="login-container">
+                <!-- login here -->
+            </div>
+        </div>
+    </div>
+    <div class="app-container">
+        <div class="tab-container">
+            <div class="settings-tab tab">
+                <div class="mazeGen-container">
+                    <h1>Maze Generating Algorithms</h1>
+                    <button id="randomMazeGen" onclick="activate('#randomMazeGen')"> Random Maze</button><br/>
+                    <button id="recursiveBtMazeGen1" onclick="activate('#recursiveBtMazeGen1')"> Recursive BackTracking</button><br/>
+                    <button id="recursiveBtMazeGen2" onclick="activate('#recursiveBtMazeGen2')"> Reverse Recursive BackTracking </button>
+                </div>
+                <div class="pathFind-container">
+                    <h1>Path Finding Algorithms</h1>
+                    <button id="depthFirstSearch" onclick="activate('#depthFirstSearch')"> Depth First Search</button><br/>
+                    <button id="dijkstra" onclick="activate('#dijkstra')"> Dijkstra's</button><br/>
+                    <button id="aStar" onclick="activate('#aStar')"> A* Algorithm</button>
+                </div>
+                <div class="speed-container">
+                    <h1>Set Speed</h1>
+                    <button id="slow" onclick="activate('#slow')">Slow</button>
+                    <button id="medium" onclick="activate('#medium')">Medium</button>
+                    <button class="active" id="fast" onclick="activate('#fast')">Fast</button>
+                    <!-- <button id="instant" onclick="activate('#instant')">Instant</button> -->
+                </div>
+                <div class="functions-container">
+                    <h1>Functions</h1>
+                    <button id="clearWalls"> Clear Walls</button>
+                    <button id="clearAll"> Clear All</button><br/>
+                    <button id="setStartCell">Set Start</button>
+                    <button id="setEndCell">Set End</button>
+                </div>
+            </div>
+            <div class="color-tab tab">
+                <h1>Themes</h1>
+                <div class="default">
+                    <div class="color-palette">
+                        <div class="start-color" style="background-color: #43AA8B;"></div>
+                        <div class="end-color" style="background-color: #F94144;"></div>
+                        <div class="wall-color" style="background-color: #284B63;"></div>
+                        <div class="visited-color" style="background-color: #F8961E;"></div>
+                        <div class="unvisited-color" style="background-color: #FFFFFF;"></div>
+                        <div class="path-color" style="background-color: #90BE6D;"></div>
+                    </div>
+                </div>
+                <button id="default" class="active" onclick="activate('#default')">Default</button>
+                <div class="theme1">
+                    <div class="color-palette">
+                        <div class="start-color" style="background-color: #06D6A0;"></div>
+                        <div class="end-color" style="background-color: #EF476F;"></div>
+                        <div class="wall-color" style="background-color: #073B4C;"></div>
+                        <div class="visited-color" style="background-color: #FFD166;"></div>
+                        <div class="unvisited-color" style="background-color: #FFFFFF;"></div>
+                        <div class="path-color" style="background-color: #169170;"></div>
+                    </div>
+                </div>
+                <button id="theme1" onclick="activate('#theme1')">Theme 1</button>
+                <button class="submit-button">Apply Changes</button>
+            </div>
+            <div class="grid-tab tab">
+                <div class="functions-container">
+                    <h1>Set Grid Size</h1>
+                    <label for="columns">Columns</label>
+                    <input type="number" id="columns" name="columns" min="10" max="55" value="35">
+                    <label for="rows">Rows</label>
+                    <input type="number" id="rows" name="rows" min="10" max="100" value="35">
+                </div>
+                <button id="setGridSize">Submit</button>
+            </div>
+            <div class="help-tab tab ON">
+                <h1>Tutorial</h1>
+                <h2>Navigate to the settings tab</h2>
+                <div style="height: 30px; width: 30px; background: url(/assets/settings.svg)no-repeat center center/contain;"></div>
+                <p>Select a maze generating algorithm or draw your own maze by clicking or dragging on the grid.</p><br/>
+                <p>Select a start and end cell by clicking on the set start and set end buttons and clicking on a cell in the grid to assign accordingly.</p><br/>
+                <p>Select a pathfinding algorithm and click the FIND PATH button in the navigation bar.</p><br/>
+                <h1>Key</h1>
+                <div class="key">
+                    <label>Start</label>
+                    <div class="start-color" style="background-color: var(--startColor);"></div>
+                    <label>End</label>
+                    <div class="end-color" style="background-color: var(--endColor);"></div>
+                    <label>Walls</label>
+                    <div class="wall-color" style="background-color: var(--wallColor);"></div>
+                    <label>Visited</label>
+                    <div class="visited-color" style="background-color: var(--visitedColor);"></div>
+                    <label>Unvisited</label>
+                    <div class="unvisited-color" style="background-color: var(--unvisitedColor);"></div>
+                    <label>Path</label>
+                    <div class="path-color" style="background-color: var(--pathColor);"></div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="top-container">
+                <button class="settings tab-button" onclick="openTab('.settings-tab')"></button>
+            </div>
+            <div class="bottom-container">
+                <button class="palette tab-button" onclick="openTab('.color-tab')"></button>
+                <button class="grid tab-button" onclick="openTab('.grid-tab')"></button>
+                <button class="help tab-button" onclick="openTab('.help-tab')"></button>
+            </div>
+        </div>
+        <div id="appCont" class="grid-container">
+            <table id="grid">
+            </table>
+        </div>
+    </div>
+        <!-- load scripts -->
+        <script type="module" src="/scripts/main.js"></script>
+    </body>
+    
+    <script>
+
+        function activate(id){
+            $(id).siblings().removeClass("active")
+            $(id).toggleClass("active")
+        }
+
+        function openTab(cName){
+            $(cName).siblings().removeClass("ON")
+            $(cName).toggleClass("ON")
+            selectedTab()
+        }
+
+        function selectedTab(){
+            $(".tab-button").removeClass("ON");
+            if($(".settings-tab").hasClass("ON")){$("button.settings").addClass("ON")
+            }else if($(".color-tab").hasClass("ON")){$("button.palette").addClass("ON")
+            }else if($(".grid-tab").hasClass("ON")){$("button.grid").addClass("ON")
+            }else if($(".help-tab").hasClass("ON")){$("button.help").addClass("ON")}
+        }
+    </script>
 
 
-    <button id="clearWalls"> clear all walls</button>
-    <button id="randomMazeGen"> random maze gen</button>
-    <button id="recursiveBtMazeGen1"> recursive maze gen 1</button>
-    <button id="recursiveBtMazeGen2"> recursive maze gen 2</button>
-    <button id="setStartCell"> set start</button>
-    <button id="setEndCell"> set end</button>
-    <button id="depthFirstSearch"> Depth First Search</button>
-    <button id="dijkstra"> Dijkstra's</button>
-
-    <!-- <button onclick="recursiveDivisionMazeGenVertical(29,25)"> recursive division maze gen</button>
-    <button onclick="findArea([1,1])"> find area</button> -->
-
-    <!-- load scripts -->
-    <script type="module" src="/scripts/main.js"></script>
-</body>
-
-<style>
-    table{
-        margin: auto;
-        border-collapse: collapse;
-    }
-    td{
-        width: 7px;
-        height: 7px;
-        border: 0.5px solid black;
-    }
-    [data-state =  "wall"]{
-        background: black;
-    }
-    /* [data-state =  "edge"]{
-        background: black;
-    } */
-    [data-state =  "start"]{
-        background: lightgreen;
-    }
-    [data-state =  "end"]{
-        background: blue;
-    }
-    [data-state =  "unvisited"]{
-        background: white;
-    }
-    [data-state =  "visited"]{
-        background: red;
-    }
-    [data-state =  "path"]{
-        background: greenyellow;
-    }
-    span{
-        display: flex;
-    }
-</style>
+<!-- // <table id="#our_table" border="1">
+//     <tr>-
+//         <th>Column 1</th>
+//         <th>Column 2</th>
+//         <th>Column 3</th>
+//     </tr>
+//     <tr>
+//         <td><span class="event" id="item1" draggable="true" display="flexbox"><img src="/assets/Start.svg" alt="start" width="80%" height="80%"></span>
+//         </td>
+//         <td><span class="event" id="item2" draggable="true" display="flexbox"><img src="/assets/End.svg" alt="end" width="80%" height="70%"></span>
+//         </td>
+//         <td></td>
+//     </tr>
+//     <tr>
+//         <td></td>
+//         <td></td>
+//         <td></td>
+//     </tr>
+// </table> -->
 
 </html>
+

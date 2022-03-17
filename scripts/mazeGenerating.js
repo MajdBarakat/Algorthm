@@ -16,6 +16,13 @@ export function clearWalls(){
     });
 }
 
+export function clearAll(){
+    const cells = document.querySelectorAll('td')
+    cells.forEach(cell => {
+        cell.dataset.state = "unvisited"
+    });
+}
+
 function fillWalls(){
     const cells = document.querySelectorAll('[data-state = "unvisited"]')
     cells.forEach(cell => {
@@ -23,7 +30,7 @@ function fillWalls(){
     });
 }
 
-export async function recursiveBtMazeGen(cols,rows,type){
+export async function recursiveBtMazeGen(cols,rows,type,speed){
     var currentCell;
     if(type == "unvisited") fillWalls(), currentCell = [1,1];
     else drawEdges(cols,rows), currentCell = [2,2];
@@ -39,7 +46,7 @@ export async function recursiveBtMazeGen(cols,rows,type){
         }
         else{
             var nextCell = chooseRandomNeighbour(availableCells)
-            await new Promise(resolve => setTimeout(resolve,0));
+            await new Promise(resolve => setTimeout(resolve, speed));
             drawPath(currentCell,nextCell,type)  
             currentCell = nextCell
             historyStack.push(currentCell)
