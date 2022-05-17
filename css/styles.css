@@ -247,16 +247,16 @@ label {
   font-weight: 500px;
 }
 .settings {
-  background: url(assets/settings.svg) no-repeat center center;
+  background: url(/assets/settings.svg) no-repeat center center;
 }
 .palette {
-  background: url(assets/palette.svg) no-repeat center center;
+  background: url(/assets/palette.svg) no-repeat center center;
 }
 .grid {
-  background: url(assets/grid.svg) no-repeat center center;
+  background: url(/assets/grid.svg) no-repeat center center;
 }
 .help {
-  background: url(assets/help.svg) no-repeat center center;
+  background: url(/assets/help.svg) no-repeat center center;
 }
 table {
   width: 100%;
