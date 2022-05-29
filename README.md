@@ -4,11 +4,11 @@ Algorthm is an educational web-application created to visualize various algorith
 
 **HOW TO USE:**
 
--Navigate to the settings tab on the right side of the window.
--Select a maze generating algorithm.
--Select a pathfinding algorithm.
--Set the positions of the start and end nodes.
--Using the top bar, you can now randomly generate a maze and find the path between the nodes.
+- Navigate to the settings tab on the right side of the window.
+- Select a maze generating algorithm.
+- Select a pathfinding algorithm.
+- Set the positions of the start and end nodes.
+- Using the top bar, you can now randomly generate a maze and find the path between the nodes.
 
 **FEATURES**
 
