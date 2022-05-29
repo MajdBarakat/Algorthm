@@ -36,3 +36,12 @@ Algorthm is an educational web-application created to visualize various algorith
 - Create custom color schemes
 - A timeline, where the user can rewind, pause, or change speed of the algorithm
 - The exact line of pseudocode will be highlighted upon execution in the timeline
+
+**TECHNOLOGIES USED**
+- JavaScript
+- JQuery
+- HTML/CSS
+
+**DOCUMENTATION & REPORT**
+The report can be found in => Algorthm>Docs 
+https://github.com/MajdBarakat/Algorthm/tree/main/Docs
