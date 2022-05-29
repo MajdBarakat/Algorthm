@@ -38,10 +38,16 @@ Algorthm is an educational web-application created to visualize various algorith
 - The exact line of pseudocode will be highlighted upon execution in the timeline
 
 **TECHNOLOGIES USED**
+
 - JavaScript
 - JQuery
 - HTML/CSS
 
 **DOCUMENTATION & REPORT**
+
 The report can be found in => Algorthm>Docs 
 https://github.com/MajdBarakat/Algorthm/tree/main/Docs
+
+**CONTACT**
+
+Please use the contact form in the website or contact me directly @ majdbarakat.dev@gmail.com for any inquiries or reporting a bug.
