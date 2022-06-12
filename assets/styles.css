@@ -52,7 +52,6 @@ h2 {
   font-size: 18px;
   opacity: 0.9;
   font-weight: 500;
-  white-space: nowrap;
   margin-bottom: 5px;
 }
 .navbar {
@@ -148,7 +147,7 @@ button.active {
   margin-bottom: 15px;
 }
 .help-tab {
-  max-width: 20%;
+  max-width: 25%;
 }
 .algorithm-sidebar {
   display: flex;
