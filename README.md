@@ -1,4 +1,4 @@
-# ALGORTHM -- **https://algorthm.co.uk/**
+# ALGORTHM -- **[https://algorthm.co.uk/](https://majdbarakat.github.io/Algorthm/)**
 
 Algorthm is an educational web-application created to visualize various algorithms with the aim of changing the traditional method of teaching algorithms and data-structures in the field of computer science. This report was written to document the issues behind the ways of teaching a core subject in computing as well as propose a possible solution.
 
